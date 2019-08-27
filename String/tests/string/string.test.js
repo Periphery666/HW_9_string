@@ -112,21 +112,105 @@ describe(`Test string tasks equalChar `, () => {
 });
 
 
-describe(`Test StringError `, () => {
+describe(`Test StringError equalChar method `, () => {
 
     it(`should return 'Invalid data' `, () => {
-        //Given
         const str = 50;
         const charF = 's';
         const charS = '3';
 
-        //Then
         assert.throws(() => {
             equalChar(str, charF, charS)
-        }, StringError, `Invalid data`);    // С обычным Error РАБОТАЕТ  с кастомным нет(((
+        }, StringError, `Invalid data`);
+    });
+    it(`should return 'Invalid data' `, () => {
+        const str = `50`;
+        const charF = undefined;
+        const charS = '3';
+
+        assert.throws(() => {
+            equalChar(str, charF, charS)
+        }, StringError, `Invalid data char`);
+    });
+    it(`should return 'Invalid data char' `, () => {
+        const str = '50';
+        const charF = 's';
+        const charS = undefined;
+
+        assert.throws(() => {
+            equalChar(str, charF, charS)
+        }, StringError, `Invalid data char`);
+    });
+    it(`should return 'Invalid data char' `, () => {
+        const str = null;
+        const charF = null;
+        const charS = null;
+        assert.throws(() => {
+            equalChar(str, charF, charS)
+        }, StringError, `Invalid data`);
     });
 
 
+});
+
+describe(`Test StringError truncate method `, () => {
+
+    it(`should return 'Invalid str' `, () => {
+        const str = 50;
+        const maxLenght = 4;
+
+        assert.throws(() => {
+            truncate(str, maxLenght)
+        }, StringError, `Invalid str`);
+    });
+    it(`should return 'Invalid str' `, () => {
+        const str = null;
+        const maxLenght = 4;
+
+        assert.throws(() => {
+            truncate(str, maxLenght)
+        }, StringError, `Invalid str`);
+    });
+    it(`should return 'Invalid str' `, () => {
+        const str = undefined;
+        const maxLenght = 4;
+
+        assert.throws(() => {
+            truncate(str, maxLenght)
+        }, StringError, `Invalid str`);
+    });
 
 
+    it(`should return 'Invalid data char' `, () => {
+        const str = '50';
+        const maxLenght = '-1';
+
+        assert.throws(() => {
+            truncate(str, maxLenght)
+        }, StringError, `Bad maxLenght`);
+    });
+    it(`should return 'Invalid data char' `, () => {
+        const str = '50';
+        const maxLenght = -1;
+
+        assert.throws(() => {
+            truncate(str, maxLenght)
+        }, StringError, `Bad maxLenght`);
+    });
+    it(`should return 'Invalid data char' `, () => {
+        const str = null;
+        const maxLenght = null;
+
+        assert.throws(() => {
+            truncate(str, maxLenght)
+        }, StringError, `Invalid str`);
+    });
+    it(`should return 'Invalid data char' `, () => {
+        const str = undefined;
+        const maxLenght = undefined;
+
+        assert.throws(() => {
+            truncate(str, maxLenght)
+        }, StringError, `Invalid str`);
+    });
 });

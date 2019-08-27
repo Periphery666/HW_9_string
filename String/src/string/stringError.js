@@ -1,8 +1,6 @@
-class StringError {
-    constructor(msg){
-        this.msg = msg;
+class StringError  extends Error {
+    constructor(message){
+        super(message);
+        this.name = `StringError`;
     }
 }
-
-StringError.prototype = Object.create(Error.prototype);
-StringError.prototype.constructor = StringError;
